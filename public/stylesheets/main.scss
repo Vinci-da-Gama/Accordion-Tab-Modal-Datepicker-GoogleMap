@@ -1,0 +1,56 @@
+/* CSS Document */
+@import "./variables.scss";
+@import "./mixins.scss";
+@import "./mediaQuery.scss";
+
+
+$zp:0px;
+$bgAisle:"../_img/flags.jpg";
+$bgVertical: top;
+$bgHorizontal: center;
+$bgRepeat: no-repeat;
+$bgSize: cover;
+$bgBlue: rgba(20, 120, 200, .99);
+/* vender prefix */
+$venderList: "-webkit-", "-moz-", "-ms-", "-o-", "";
+
+body.basictorso
+{
+	@include extendFlex($zp);
+	@include fontSmooth();
+}
+
+div.navbar-default {
+	margin: 0;
+}
+
+section {
+	margin-bottom: 6vh;
+	> div.tma-homebg {
+		width: 100%;
+		height: 500px;
+		max-height: 500px;
+		min-height: 500px;
+		@include bg('../_img/bg.jpg', $bgVertical, $bgHorizontal, $bgRepeat, $bgSize);
+	}
+}
+
+
+footer.tma-fixed-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+	height: 5vh;
+	max-height: 5vh;
+	text-align: center;
+
+	background: #f6e6b4; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f6e6b4 0%, #efb52d 41%, #e8d28b 50%, #e8d28b 50%, #eabe2c 58%, #ed9017 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #f6e6b4 0%,#efb52d 41%,#e8d28b 50%,#e8d28b 50%,#eabe2c 58%,#ed9017 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #f6e6b4 0%,#efb52d 41%,#e8d28b 50%,#e8d28b 50%,#eabe2c 58%,#ed9017 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6e6b4', endColorstr='#ed9017',GradientType=0 ); /* IE6-9 */
+	> div {
+		margin: 1.4vh auto;
+	}
+}
