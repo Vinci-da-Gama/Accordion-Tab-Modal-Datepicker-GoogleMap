@@ -28,21 +28,25 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" ng-href="#">Accordion-Tab-Modal</a>
+			<a class="navbar-brand" ng-href="#">Accordion-Tab-Modal-Datepicker-GoogleMap</a>
 		</div>
-	
+
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse accordion-tab-modal-navbar">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a ui-sref="#">Accordion</a></li>
-				<li><a ui-sref="#">Tab</a></li>
-				<li><a ui-sref="#">Modal</a></li>
+				<li><a ui-sref="dp">DatePicker</a></li>
+				<li><a ui-sref="accordion">Accordion</a></li>
+				<li><a ui-sref="tab">Tab</a></li>
+				<li><a ui-sref="modal">Modal</a></li>
+				<li><a ui-sref="googlemap">GoogleMap</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div>
 
 	<section>
 		<div class="tma-homebg"></div>
+		<div ui-view></div>
+
 	</section>
 
 	<footer class="tma-fixed-footer">

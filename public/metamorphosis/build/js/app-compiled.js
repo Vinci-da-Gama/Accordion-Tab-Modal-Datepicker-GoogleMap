@@ -28,13 +28,33 @@
 	var rM = angular.module('tma.router');
 
 	rM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-		$urlRouterProvider.otherwise('/');
+		$urlRouterProvider.otherwise('/dp');
 
 		$stateProvider
-		.state('home', {
-			url: '/',
+		.state('dp', {
+			url: '/dp',
+			templateUrl: './_partials/views/datepicker-view.html',
+			controller: 'dpCtrl'
+		})
+		.state('accordion', {
+			url: '/accordion',
 			templateUrl: './_partials/views/accordion-view.html',
-			controller: 'homeCtrl'
+			controller: 'accordionCtrl'
+		})
+		.state('tab', {
+			url: '/tab',
+			templateUrl: './_partials/views/tab-view.html',
+			controller: 'tabCtrl'
+		})
+		.state('modal', {
+			url: '/modal',
+			templateUrl: './_partials/views/modal-view.html',
+			controller: 'modalCtrl'
+		})
+		.state('googlemap', {
+			url: '/googlemap',
+			templateUrl: './_partials/views/googlemap-view.html',
+			controller: 'goomapCtrl'
 		});
 
 	}]);
@@ -47,21 +67,59 @@
 (function () {
 	var ctrlM = angular.module('tma.ctrl');
 
-	ctrlM.controller('homeCtrl', ['$scope', function($scope){
-		console.log('homeCtrl');
+	ctrlM.controller('dpCtrl', ['$scope', function($scope){
+		console.log('dpCtrl');
+		$scope.dateFormat = 'dd/MM/yyyy';
+
+		$scope.leftdp = { opened: false };
+
+		$scope.rightdp = { opened: false };
+
+		// This is how to open the calendar. uib-datepicker has default opened must be assigned some value.
+		$scope.leftOpen = function($event) {
+			/*$event.preventDefault();
+			$event.stopPropagation();*/
+		    $scope.leftdp.opened = true;
+		    console.log('leftOpen_Function.');
+		};
+
+		$scope.rightOpen = function ($event) {
+			$scope.rightdp.opened = true;
+		    console.log('rightOpen_Function.');
+		};
+
+		$scope.maxDate = new Date();
+		$scope.minDate = new Date();
+
 	}]);
 
-})();
-(function () {
-	var dM = angular.module('tma.dir');
+	ctrlM.controller('accordionCtrl', ['$scope', function($scope){
+		console.log('accordionCtrl');
+	}]);
 
-	// dM
+	ctrlM.controller('tabCtrl', ['$scope', function($scope){
+		console.log('tabCtrl');
+	}]);
+
+	ctrlM.controller('modalCtrl', ['$scope', function($scope){
+		console.log('modalCtrl');
+	}]);
+
+	ctrlM.controller('goomapCtrl', ['$scope', function($scope){
+		console.log('goomapCtrl');
+	}]);
 
 })();
 (function () {
 	var cdM = angular.module('tma.cust.dir');
 
 	// cdM
+
+})();
+(function () {
+	var dM = angular.module('tma.dir');
+
+	// dM
 
 })();
 // service js Document

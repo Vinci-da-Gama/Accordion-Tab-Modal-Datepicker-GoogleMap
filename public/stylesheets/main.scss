@@ -33,6 +33,10 @@ section {
 		min-height: 500px;
 		@include bg('../_img/bg.jpg', $bgVertical, $bgHorizontal, $bgRepeat, $bgSize);
 	}
+	div.datepicker-jumbotron {
+		width: 100%;
+		height: 600px;
+	}
 }
 
 
