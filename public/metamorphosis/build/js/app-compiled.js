@@ -61,7 +61,36 @@
 
 })();
 (function () {
-	var cosM = angular.module('tma.constant');
+	var cdM = angular.module('tma.cust.dir');
+
+	cdM.directive('accordionRightDirective', [function(){
+		return {
+			scope: {
+				accordionRightContent: '='
+			}, // {} = isolate, true = child, false/undefined = no change
+			controller: function($scope, $element, $attrs, $transclude) {
+				console.log('$scope.accordionRightContent is: ', $scope.accordionRightContent);
+				$scope.$watch('accordionRightContent', function (nv, ov) {
+					if (nv !== ov) {
+						$scope.currentRightContent = $scope.accordionRightContent;
+						console.log('14-- accordionRightDirective -- $scope.currentRightContent is: ', $scope.currentRightContent);
+					} else{
+						console.log('the accordionRightContent is not passed.');
+					}
+				});
+			},
+			// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+			restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+			// template: '',
+			templateUrl: './_partials/templates/accordion-right-directive.html',
+			// replace: true,
+			// transclude: true,
+			// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+			link: function($scope, iElm, iAttrs, controller) {
+				
+			}
+		};
+	}]);
 
 })();
 (function () {
@@ -93,8 +122,23 @@
 
 	}]);
 
-	ctrlM.controller('accordionCtrl', ['$scope', function($scope){
+	ctrlM.controller('accordionCtrl', ['$scope', 'gainAccordionHeadersAndNgIncludes', function($scope, gainAccordionHeadersAndNgIncludes){
 		console.log('accordionCtrl');
+		$scope.oneAtATime = true;
+		// https://api.myjson.com/bins/3zvab
+		$scope.headingsAndNgIncludeTmpls = [
+			{"header": "submergence_0", "tmplUrl": "./_partials/templates/accordion-ngInclude/include-tmpl0.html"},
+			{"header": "submergence_1", "tmplUrl": "./_partials/templates/accordion-ngInclude/include-tmpl1.html"},
+			{"header": "submergence_2", "tmplUrl": "./_partials/templates/accordion-ngInclude/include-tmpl2.html"}
+		];
+
+		gainAccordionHeadersAndNgIncludes.claspAccordionHeadersAndImages(graspAccordionDossier);
+
+		function graspAccordionDossier (dossier) {
+			$scope.rightDirectiveAccordionContent = dossier.data;
+			console.log('accordionCtrl >> $scope.rightDirectiveAccordionContent: ', $scope.rightDirectiveAccordionContent);
+		}
+
 	}]);
 
 	ctrlM.controller('tabCtrl', ['$scope', function($scope){
@@ -111,9 +155,7 @@
 
 })();
 (function () {
-	var cdM = angular.module('tma.cust.dir');
-
-	// cdM
+	var cosM = angular.module('tma.constant');
 
 })();
 (function () {
@@ -169,29 +211,27 @@
 
 })();
 // service js Document
-// $log.log("sigSrevice error line -- 14 --- data : "+data+" config: "+config+" status: "+status+".---");
-/*sigM.service('inquireInfo', ['$http', '$log', 'appnameDb', function($http, $log, appnameDb){
-	var dbPath = appnameDb.dbDot+appnameDb.delimiter+appnameDb.dbPrefix+appnameDb.delimiter+appnameDb.dbName+appnameDb.dbExtension;
-
-	this.obtainDossier = function (func) {
-		$http.get(dbPath)
-		.then(function (testimony) {
-			func(testimony.data);
-			$log.log('get data successfully. '+dbPath);
-		})
-		.catch(function (data, config, status) {
-			$log.log("sigSrevice error line -- 16 -\&\#1046\;- data : "+data+" config: "+config+" status: "+status+".---");
-		})
-		.finally(function () {
-			$log.log('sigSrevice line 19, finally method.');
-		});
-	};
-
-}]);*/
 (function () {
 	var ssM = angular.module('tma.sig.service');
 
-	// ssM
+	ssM.service('gainAccordionHeadersAndNgIncludes', ['$http', function($http){
+		var lane = 'https://api.myjson.com/bins/4s297';
+
+		this.claspAccordionHeadersAndImages = function (func) {
+			$http.get(lane)
+			.then(function (testimony) {
+				func(testimony);
+				// console.log('the testimony is: -- ', testimony);
+			})
+			.catch(function (data, config, status) {
+				console.log("sigSrevice error line -- 16 -\&\#1046\;- data : "+data+" config: "+config+" status: "+status+".---");
+			})
+			.finally(function () {
+				console.log('line 36 accordion headers and images: final function');
+			});
+		};
+
+	}]);
 
 })();
 // jQuery Js Document

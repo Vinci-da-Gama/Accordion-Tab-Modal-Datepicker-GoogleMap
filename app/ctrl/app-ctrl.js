@@ -27,8 +27,23 @@
 
 	}]);
 
-	ctrlM.controller('accordionCtrl', ['$scope', function($scope){
+	ctrlM.controller('accordionCtrl', ['$scope', 'gainAccordionHeadersAndNgIncludes', function($scope, gainAccordionHeadersAndNgIncludes){
 		console.log('accordionCtrl');
+		$scope.oneAtATime = true;
+		// https://api.myjson.com/bins/3zvab
+		$scope.headingsAndNgIncludeTmpls = [
+			{"header": "submergence_0", "tmplUrl": "./_partials/templates/accordion-ngInclude/include-tmpl0.html"},
+			{"header": "submergence_1", "tmplUrl": "./_partials/templates/accordion-ngInclude/include-tmpl1.html"},
+			{"header": "submergence_2", "tmplUrl": "./_partials/templates/accordion-ngInclude/include-tmpl2.html"}
+		];
+
+		gainAccordionHeadersAndNgIncludes.claspAccordionHeadersAndImages(graspAccordionDossier);
+
+		function graspAccordionDossier (dossier) {
+			$scope.rightDirectiveAccordionContent = dossier.data;
+			console.log('accordionCtrl >> $scope.rightDirectiveAccordionContent: ', $scope.rightDirectiveAccordionContent);
+		}
+
 	}]);
 
 	ctrlM.controller('tabCtrl', ['$scope', function($scope){

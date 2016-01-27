@@ -1,26 +1,24 @@
 // service js Document
-// $log.log("sigSrevice error line -- 14 --- data : "+data+" config: "+config+" status: "+status+".---");
-/*sigM.service('inquireInfo', ['$http', '$log', 'appnameDb', function($http, $log, appnameDb){
-	var dbPath = appnameDb.dbDot+appnameDb.delimiter+appnameDb.dbPrefix+appnameDb.delimiter+appnameDb.dbName+appnameDb.dbExtension;
-
-	this.obtainDossier = function (func) {
-		$http.get(dbPath)
-		.then(function (testimony) {
-			func(testimony.data);
-			$log.log('get data successfully. '+dbPath);
-		})
-		.catch(function (data, config, status) {
-			$log.log("sigSrevice error line -- 16 -\&\#1046\;- data : "+data+" config: "+config+" status: "+status+".---");
-		})
-		.finally(function () {
-			$log.log('sigSrevice line 19, finally method.');
-		});
-	};
-
-}]);*/
 (function () {
 	var ssM = angular.module('tma.sig.service');
 
-	// ssM
+	ssM.service('gainAccordionHeadersAndNgIncludes', ['$http', function($http){
+		var lane = 'https://api.myjson.com/bins/4s297';
+
+		this.claspAccordionHeadersAndImages = function (func) {
+			$http.get(lane)
+			.then(function (testimony) {
+				func(testimony);
+				// console.log('the testimony is: -- ', testimony);
+			})
+			.catch(function (data, config, status) {
+				console.log("sigSrevice error line -- 16 -\&\#1046\;- data : "+data+" config: "+config+" status: "+status+".---");
+			})
+			.finally(function () {
+				console.log('line 36 accordion headers and images: final function');
+			});
+		};
+
+	}]);
 
 })();

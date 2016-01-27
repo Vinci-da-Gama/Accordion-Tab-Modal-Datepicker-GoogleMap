@@ -1,1 +1,15 @@
-<p>accordion</p>
+<div class="row section-row">
+	<div class="col-md-6">
+		<h1>Accordion<small>ng-include</small></h1>
+		<uib-accordion close-others="oneAtATime">
+			<uib-accordion-group ng-repeat="ht in headingsAndNgIncludeTmpls">
+				<uib-accordion-heading>{{ht.header}}</uib-accordion-heading>
+				<div ng-include="ht.tmplUrl"></div>
+			</uib-accordion-group>
+		</uib-accordion>
+	</div>
+	<div class="col-md-6">
+		<h1>Accordion<small>directive</small></h1>
+		<accordion-right-directive accordion-right-content="rightDirectiveAccordionContent"></accordion-right-directive>
+	</div>
+</div>

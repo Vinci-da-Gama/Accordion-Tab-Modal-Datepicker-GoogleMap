@@ -1,0 +1,7 @@
+<uib-accordion>
+	<uib-accordion-group ng-repeat="rightPatch in currentRightContent">
+		<uib-accordion-heading>{{rightPatch.header}}</uib-accordion-heading>
+		<p>{{rightPatch.caption}}</p>
+		<img ng-src="{{rightPatch.imgUrl}}" alt="accordionImage">
+	</uib-accordion-group>
+</uib-accordion>

@@ -37,6 +37,15 @@ section {
 		width: 100%;
 		height: 600px;
 	}
+	div.section-row {
+		margin: 0px;
+		uib-accordion {
+			img {
+				width: 256px;
+				height: 256px;
+			}
+		}
+	}
 }
 
 
