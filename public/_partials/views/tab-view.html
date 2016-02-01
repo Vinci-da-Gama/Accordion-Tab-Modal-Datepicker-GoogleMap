@@ -4,6 +4,16 @@
 <div class="row margin-leftright-clear">
 	<div class="col-md-6">
 		<p>left_Horizontal_Tab</p>
+		<uib-tabset>
+			<uib-tab ng-repeat="dib in horizontalTabContent" disable="dib.disabled">
+				<uib-tab-heading>
+					{{dib.heading}}
+				</uib-tab-heading>
+				<code>{{dib.description}}</code>
+				<img ng-src="{{dib.imgUrl}}" alt="tabImage">
+			</uib-tab>
+		</uib-tabset>
+		<button type="button" class="btn btn-warning" ng-click="horizontalTabContent[2].disabled = !horizontalTabContent[2].disabled">Enable / Disable tab3</button>
 	</div>
 	<div class="col-md-6">
 		<p>right_Vertical_Tab</p>

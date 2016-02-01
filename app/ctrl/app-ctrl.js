@@ -48,6 +48,11 @@
 
 	ctrlM.controller('tabCtrl', ['$scope', function($scope){
 		console.log('tabCtrl');
+		$scope.horizontalTabContent = [
+			{heading: "tab1", description: "desc_1", imgUrl: "./images/magic-symbol.png", disabled: false},
+			{heading: "tab2", description: "desc_2", imgUrl: "./images/matic-symbol.png", disabled: false},
+			{heading: "tab3", description: "desc_3", imgUrl: "./images/panda1.png", disabled: false}
+		];
 	}]);
 
 	ctrlM.controller('modalCtrl', ['$scope', function($scope){
