@@ -5,7 +5,7 @@
 	<div class="col-md-6">
 		<p>left_Horizontal_Tab</p>
 		<uib-tabset>
-			<uib-tab ng-repeat="dib in horizontalTabContent" disable="dib.disabled">
+			<uib-tab ng-repeat="dib in horizontalTabContent" active="dib.active" disable="dib.disabled">
 				<uib-tab-heading>
 					{{dib.heading}}
 				</uib-tab-heading>
@@ -13,9 +13,28 @@
 				<img ng-src="{{dib.imgUrl}}" alt="tabImage">
 			</uib-tab>
 		</uib-tabset>
+		<button type="button" class="btn btn-primary" ng-click="horizontalTabContent[1].active = true">Active 2nd Tab</button>
 		<button type="button" class="btn btn-warning" ng-click="horizontalTabContent[2].disabled = !horizontalTabContent[2].disabled">Enable / Disable tab3</button>
 	</div>
 	<div class="col-md-6">
 		<p>right_Vertical_Tab</p>
+		<uib-tabset vertical="true" type="pills">
+			<uib-tab ng-repeat="rightDib in verticalTabContent">
+				<uib-tab-heading>
+					{{rightDib.heading}}
+				</uib-tab-heading>
+				<div class="row">
+					<div class="col-md-6">
+						<form name="outerForm">
+							<legend>{{rightDib.description}}</legend>
+							<div ng-include="rightDib.tmplUrl"></div>
+						</form>
+					</div>
+					<div class="col-md-6">
+						<img ng-src="{{rightDib.imgUrl}}" alt="rightTabImage">
+					</div>
+				</div>
+			</uib-tab>
+		</uib-tabset>
 	</div>
 </div>

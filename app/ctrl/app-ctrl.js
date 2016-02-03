@@ -48,10 +48,16 @@
 
 	ctrlM.controller('tabCtrl', ['$scope', function($scope){
 		console.log('tabCtrl');
+		// 2nd tab would be actived at beginning.
 		$scope.horizontalTabContent = [
 			{heading: "tab1", description: "desc_1", imgUrl: "./images/magic-symbol.png", disabled: false},
-			{heading: "tab2", description: "desc_2", imgUrl: "./images/matic-symbol.png", disabled: false},
+			{heading: "tab2", description: "desc_2", imgUrl: "./images/matic-symbol.png", disabled: false, active: true},
 			{heading: "tab3", description: "desc_3", imgUrl: "./images/panda1.png", disabled: false}
+		];
+		$scope.verticalTabContent = [
+			{heading: "tab1", description: "desc_1", imgUrl: "./images/magic-symbol.png", tmplUrl: "./_partials/templates/vertical-righttab-ngInclude/righttab-tmpl0.html"},
+			{heading: "tab2", description: "desc_2", imgUrl: "./images/matic-symbol.png", tmplUrl: "./_partials/templates/vertical-righttab-ngInclude/righttab-tmpl1.html"},
+			{heading: "tab3", description: "desc_3", imgUrl: "./images/panda1.png", tmplUrl: "./_partials/templates/vertical-righttab-ngInclude/righttab-tmpl2.html"}
 		];
 	}]);
 
@@ -64,3 +70,24 @@
 	}]);
 
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
