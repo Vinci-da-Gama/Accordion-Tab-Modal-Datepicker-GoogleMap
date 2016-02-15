@@ -11,6 +11,7 @@ $bgHorizontal: center;
 $bgRepeat: no-repeat;
 $bgSize: cover;
 $bgBlue: rgba(20, 120, 200, .99);
+$emphasizeWordBlue: rgba(18, 150, 254, .99);
 /* vender prefix */
 $venderList: "-webkit-", "-moz-", "-ms-", "-o-", "";
 
@@ -60,6 +61,12 @@ div.tab-content {
 		width: 256px;
 		height: 256px;
 	}	
+}
+
+.emphasize-thing {
+	font-size: 16px;
+	font-weight: bold;
+	color: $emphasizeWordBlue;
 }
 
 div[vertical="true"] {

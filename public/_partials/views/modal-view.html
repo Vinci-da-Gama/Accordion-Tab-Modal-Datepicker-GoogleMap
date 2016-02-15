@@ -1,1 +1,15 @@
-<p>uib-modal</p>
+<div class="row section-row">
+	<div class="col-md-4" ng-controller="smallModalCtrl">
+		<p>(modal and modalInstance through controller) small modal: callback --> say Hello</p>
+		<button type="button" class="btn btn-info" ng-click="openSmallModal();">small_Modal_Button</button>
+		<p>the Item you choose <span>{{selected}}</span></p>
+	</div>
+	<div class="col-md-4">
+		<p>middle modal: callback --> say window.location</p>
+
+	</div>
+	<div class="col-md-4">
+		<p>large modal: callback --> say Hello world</p>
+
+	</div>
+</div>

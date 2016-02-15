@@ -1,0 +1,18 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" aria-hidden="true" ng-click="cancel()">&times;</button>
+		<h4 class="modal-title">Modal title</h4>
+	</div>
+	<div class="modal-body">
+		<ul>
+			<li ng-repeat="prepareItem in items">
+				<tt ng-click="pickUpTheOneYouLike($event, prepareItem)">{{prepareItem}}</tt>
+			</li>
+		</ul>
+		<p>The chosen One is: <span class="emphasize-thing">{{selectedItem}}</span></p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="saveChange()">Save changes</button>
+	</div>
+</div>

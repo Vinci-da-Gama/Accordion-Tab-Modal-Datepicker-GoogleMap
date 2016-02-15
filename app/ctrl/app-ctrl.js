@@ -65,6 +65,66 @@
 		console.log('modalCtrl');
 	}]);
 
+	ctrlM.controller('smallModalCtrl', ['$scope', '$uibModal', '$timeout', function($scope, $uibModal, $timeout){
+		console.log('smallModalCtrl');
+		// there are three sizes for modal 'lg' for large, middle is default and 'sm' for small.
+		var modalSizeCollection = ['lg', 'sm'];
+		$scope.animationsEnabled = true;
+		$scope.items = ['itemArr1', 'itemArr2', 'itemArr3'];
+
+		var uibSmallModalObj = {
+			animation: $scope.animationsEnabled,
+		    templateUrl: './_partials/templates/modal-tmpl.html',
+		    controller: 'uibSmallModalInstanceCtrl',
+		    size: modalSizeCollection[1],
+		    resolve: {
+		        itemsSrc: function () {
+		          	return $scope.items;
+		        }
+		    }
+		};
+
+		$scope.openSmallModal = function () {
+			console.log('openSmallModal');
+			var uibSmallModalInstance = $uibModal.open(uibSmallModalObj);
+			uibSmallModalInstance.result.then(function (selectedItemFromUibSmallModalInstanceCtrl) {
+				$scope.selected = selectedItemFromUibSmallModalInstanceCtrl;
+				console.log('when go here? ');
+				// call the callbackfunction as function inside success function.
+				// this looks like callback, but actually not.
+				$timeout(function () {
+					ctrlCallbackFunction($scope.selected);
+				}, 1000);
+			}, function () {
+				console.log('Doesn\'t receive any selected item.');
+			});
+		};
+
+		function ctrlCallbackFunction(passedValue) {
+			alert("say Hello. the item you choosed is: -- "+passedValue);
+		}
+
+	}]);
+
+	ctrlM.controller('uibSmallModalInstanceCtrl', ['$uibModalInstance', '$scope', 'itemsSrc', function($uibModalInstance, $scope, itemsSrc){
+		console.log('uibSmallModalInstanceCtrl');
+		$scope.items = itemsSrc;
+
+		$scope.pickUpTheOneYouLike = function (e, theChosenItem) {
+			// console.log('104 uibSmallModalInstanceCtrl pickUpTheOneYouLike function -- current event: ', e);
+			e.preventDefault();
+			$scope.selectedItem = theChosenItem;
+		};
+
+		$scope.saveChange = function () {
+		    $uibModalInstance.close($scope.selectedItem);
+		};
+
+		$scope.cancel = function () {
+		    $uibModalInstance.dismiss('cancel');
+		};
+	}]);
+
 	ctrlM.controller('goomapCtrl', ['$scope', function($scope){
 		console.log('goomapCtrl');
 	}]);
