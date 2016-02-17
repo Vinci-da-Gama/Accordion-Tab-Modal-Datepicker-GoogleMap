@@ -61,8 +61,29 @@
 		];
 	}]);
 
-	ctrlM.controller('modalCtrl', ['$scope', function($scope){
+	ctrlM.controller('modalCtrl', ['$scope', '$timeout', function($scope, $timeout){
 		console.log('modalCtrl');
+
+		$scope.modalSizeCollection = ['lg', 'md', 'sm'];
+		$scope.modalItems = ['itemArr1', 'itemArr2', 'itemArr3'];
+
+		$scope.$on('midModalEmit', function (event, midItem) {
+			console.log('71 args: -- ', midItem);
+			$scope.midModalItem = midItem;
+		});
+
+		// middle-Modal-Callback-function
+		$scope.middleModalSay = function () {
+			$timeout(function () {
+				haha($scope.midModalItem);
+			}, 1000);
+			console.log('modalCtrl line 72 -- middle-Modal-Callback-function');
+		};
+
+		function haha(theMidModalItem) {
+			alert("hahaha"+theMidModalItem);
+		}
+
 	}]);
 
 	ctrlM.controller('smallModalCtrl', ['$scope', '$uibModal', '$timeout', function($scope, $uibModal, $timeout){
@@ -117,7 +138,13 @@
 		};
 
 		$scope.saveChange = function () {
-		    $uibModalInstance.close($scope.selectedItem);
+			if ($scope.selectedItem !== '' && $scope.selectedItem !== null && $scope.selectedItem !== undefined && typeof($scope.selectedItem) !== undefined) {
+				console.log('121 $scope.selectedItem is: '+$scope.selectedItem+" -- "+typeof($scope.selectedItem));
+		    	$uibModalInstance.close($scope.selectedItem);
+			} else {
+				console.log('124 $scope.selectedItem is: '+$scope.selectedItem+" -- "+typeof($scope.selectedItem));
+				return;
+			}
 		};
 
 		$scope.cancel = function () {
